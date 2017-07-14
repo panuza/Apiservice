@@ -1,6 +1,6 @@
 com\crunchify\restjersey\JsonService.class
 com\crunchify\restjersey\XmlService.class
 com\crunchify\restjersey\CtoFService.class
-com\crunchify\restjersey\htmlService.class
 com\crunchify\restjersey\Utills.class
 com\crunchify\restjersey\ReadCSVFIle.class
+com\crunchify\restjersey\HtmlService.class
