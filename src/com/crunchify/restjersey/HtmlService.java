@@ -17,38 +17,35 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 
-
 @Path("/film.html")
 
 public class HtmlService {
-	
+
 	@GET
 	@Produces("text/html")
-	public void   test(@Context ServletContext context,
-	        @Context HttpServletRequest request,
-	        @Context HttpServletResponse response) throws URISyntaxException, ServletException, IOException {
-	
-			 
-				Utills utills = new Utills();
-				ArrayList<HashMap<String, String>> list = utills.getList();
-				Random random = new Random();
-				int index = random.nextInt(list.size());
+	public void test(@Context ServletContext context, @Context HttpServletRequest request,
+			@Context HttpServletResponse response) throws URISyntaxException, ServletException, IOException {
 
-				List<String> keys = new ArrayList<String>(list.get(index).keySet());
-			        
-		    //  String myJsfPage ="../NewFile.html";
-		        //response.getWriter().print("Year: " +list.get(index).get(list.get(index).keySet().iterator().next())  + " Title :"  +keys.iterator().next().toString().replace("\"", ""));
-	        request.setAttribute("year",list.get(index).get(list.get(index).keySet().iterator().next()) ); 
-	        request.setAttribute("title",list.get(index).get(list.get(index).keySet().iterator().next()) ); 
-		        
-//				response.sendRedirect("/NewFile.html");
-		        
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/NewFile.jsp");
+		Utills utills = new Utills();
+		ArrayList<HashMap<String, String>> list = utills.getList();
+		Random random = new Random();
+		int index = random.nextInt(list.size());
 
-				rd.forward(request, response);	
-				
-	
-		
+		List<String> keys = new ArrayList<String>(list.get(index).keySet());
+
+		// String myJsfPage ="../NewFile.html";
+		// response.getWriter().print("Year: "
+		// +list.get(index).get(list.get(index).keySet().iterator().next()) + "
+		// Title :" +keys.iterator().next().toString().replace("\"", ""));
+		request.setAttribute("year", list.get(index).get(list.get(index).keySet().iterator().next()));
+		request.setAttribute("title", list.get(index).get(list.get(index).keySet().iterator().next()));
+
+		// response.sendRedirect("/NewFile.html");
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/NewFile.jsp");
+
+		rd.forward(request, response);
+
 	}
-	
+
 }

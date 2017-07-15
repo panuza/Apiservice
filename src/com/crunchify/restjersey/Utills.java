@@ -1,8 +1,9 @@
 package com.crunchify.restjersey;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,11 +11,13 @@ public class Utills {
 
 	public static ArrayList<HashMap<String, String>> getList() {
 
-		String csvFile = "C:/Users/panuja/Desktop/Film.csv";
+		InputStream csvFile = Utills.class.getClassLoader().getResourceAsStream("Film");
+
 		String line = "";
 		String cvsSplitBy = ",";
 		ArrayList<HashMap<String, String>> list = new ArrayList<>();
-		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(csvFile))) {
 
 			while ((line = br.readLine()) != null) {
 
